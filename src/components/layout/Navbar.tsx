@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { 
+import {
   Menu,
   Package,
   MapPin,
@@ -22,8 +22,10 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Disable real tracking form toggle, show coming soon message instead
   const toggleTracking = () => {
-    setIsTrackingOpen(!isTrackingOpen);
+    // setIsTrackingOpen(!isTrackingOpen);
+    // Do nothing or optionally alert about coming soon
   };
 
   return (
@@ -33,17 +35,17 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
               <img
-                className="h-12 w-auto"
+                className="h-14 w-auto drop-shadow-md transition-transform duration-300 hover:scale-105"
                 src="/lovable-uploads/c414fd89-7210-4891-8b3e-b4be72fdb25d.png"
                 alt="GravityShift Logo"
               />
             </Link>
           </div>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className="nav-link">Home</Link>
-            
+
             <div className="relative group">
               <button className="nav-link flex items-center">
                 Services <ChevronDown size={16} className="ml-1" />
@@ -56,23 +58,24 @@ const Navbar = () => {
                 <Link to="/services/contract-logistics" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contract Logistics & Fleet Leasing</Link>
               </div>
             </div>
-            
+
             <Link to="/technology" className="nav-link">Technology</Link>
             <Link to="/about" className="nav-link">About Us</Link>
             <Link to="/fleet" className="nav-link">Fleet Capabilities</Link>
             <Link to="/sops" className="nav-link">SOPs</Link>
             <Link to="/contact" className="nav-link">Contact</Link>
           </div>
-          
+
           <div className="hidden md:flex items-center space-x-4">
-            <Button onClick={toggleTracking} variant="outline" className="flex items-center">
-              <Search size={16} className="mr-1" /> Track
+            {/* Showing track button as disabled with coming soon */}
+            <Button disabled variant="outline" className="flex items-center cursor-not-allowed" title="Tracking facility coming soon">
+              <Search size={16} className="mr-1" /> Track (Coming Soon)
             </Button>
             <Button asChild>
               <Link to="/contact#quote">Get a Quote</Link>
             </Button>
           </div>
-          
+
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
             <button
@@ -88,7 +91,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      
+
       {/* Mobile menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-white shadow-lg">
@@ -111,8 +114,9 @@ const Navbar = () => {
             <Link to="/contact" className="block px-3 py-2 rounded-md text-base font-medium nav-link">Contact</Link>
           </div>
           <div className="px-2 py-3 flex flex-col space-y-2">
-            <Button onClick={toggleTracking} variant="outline" size="sm" className="flex items-center justify-center">
-              <Search size={16} className="mr-1" /> Track Shipment
+            {/* Disabled track shipment button with "Coming Soon" label */}
+            <Button disabled variant="outline" size="sm" className="flex items-center justify-center cursor-not-allowed" title="Tracking facility coming soon">
+              <Search size={16} className="mr-1" /> Track Shipment (Coming Soon)
             </Button>
             <Button asChild size="sm">
               <Link to="/contact#quote">Get a Quote</Link>
@@ -120,9 +124,9 @@ const Navbar = () => {
           </div>
         </div>
       )}
-      
-      {/* Tracking form dropdown */}
-      {isTrackingOpen && (
+
+      {/* Hide current tracking form dropdown as feature is not active */}
+      {/* {isTrackingOpen && (
         <div className="absolute top-20 right-4 sm:right-6 lg:right-8 bg-white shadow-xl rounded-md p-4 w-full max-w-md z-50 animate-fade-in">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-lg font-semibold text-brand-navy">Track Your Shipment</h3>
@@ -143,7 +147,7 @@ const Navbar = () => {
             </Button>
           </form>
         </div>
-      )}
+      )} */}
     </nav>
   );
 };
