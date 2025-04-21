@@ -1,4 +1,3 @@
-
 import Layout from "@/components/layout/Layout";
 import SectionHeader from "@/components/shared/SectionHeader";
 import CertificationBadge from "@/components/shared/CertificationBadge";
@@ -10,38 +9,6 @@ import {
 } from 'lucide-react';
 
 const About = () => {
-  const leadership = [
-    {
-      name: 'Ahmed Al Mansouri',
-      title: 'Chief Executive Officer',
-      bio: 'With over 20 years of experience in logistics across the GCC, Ahmed leads our strategic vision and innovation initiatives.'
-    },
-    {
-      name: 'Fatima Al Khouri',
-      title: 'Chief Operations Officer',
-      bio: 'Fatima brings 15+ years of expertise in optimizing logistics operations and implementing cutting-edge technologies.'
-    },
-    {
-      name: 'Raj Mehta',
-      title: 'Chief Technology Officer',
-      bio: 'A pioneer in logistics technology, Raj leads our digital transformation initiatives and TMS integration efforts.'
-    },
-    {
-      name: 'Sarah Johnson',
-      title: 'Director of Sustainability',
-      bio: 'Sarah champions our eco-friendly practices and carbon footprint reduction strategies across all operations.'
-    }
-  ];
-
-  const certifications = [
-    { name: 'RTA Approved', icon: <ShieldCheck size={16} /> },
-    { name: 'GIG Insured', icon: <ShieldCheck size={16} /> },
-    { name: 'ISO 9001:2015', icon: <Award size={16} /> },
-    { name: 'ISO 14001:2015', icon: <Award size={16} /> },
-    { name: 'HACCP Certified', icon: <Award size={16} /> },
-    { name: 'GDP Compliant', icon: <Award size={16} /> },
-  ];
-
   const values = [
     {
       name: 'Innovation',
@@ -63,6 +30,15 @@ const About = () => {
       name: 'Customer-Centricity',
       description: 'We place our customers at the heart of everything we do, tailoring solutions to meet their specific needs.'
     }
+  ];
+
+  const certifications = [
+    { name: 'RTA Approved', icon: <ShieldCheck size={16} /> },
+    { name: 'GIG Insured', icon: <ShieldCheck size={16} /> },
+    { name: 'ISO 9001:2015', icon: <Award size={16} /> },
+    { name: 'ISO 14001:2015', icon: <Award size={16} /> },
+    { name: 'HACCP Certified', icon: <Award size={16} /> },
+    { name: 'GDP Compliant', icon: <Award size={16} /> },
   ];
 
   return (
@@ -144,30 +120,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Leadership Team */}
-      <section className="section-container">
-        <SectionHeader
-          title="Leadership Team"
-          subtitle="OUR EXPERTS"
-          description="Meet the experienced professionals who drive our company's success and innovation."
-        />
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {leadership.map((leader, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="bg-gray-200 h-48 flex items-center justify-center">
-                <Users size={48} className="text-gray-400" />
-              </div>
-              <div className="p-4">
-                <h3 className="text-lg font-semibold text-brand-navy">{leader.name}</h3>
-                <p className="text-brand-orange mb-2">{leader.title}</p>
-                <p className="text-sm text-gray-600">{leader.bio}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Certifications */}
       <section className="section-container bg-gray-50">
         <SectionHeader
@@ -178,46 +130,13 @@ const About = () => {
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
           {certifications.map((cert, index) => (
-            <CertificationBadge 
-              key={index} 
-              name={cert.name} 
-              icon={cert.icon} 
+            <CertificationBadge
+              key={index}
+              name={cert.name}
+              icon={cert.icon}
               className="flex justify-center"
             />
           ))}
-        </div>
-        
-        <div className="mt-12 bg-white rounded-lg shadow p-6">
-          <h3 className="text-xl font-semibold mb-4 text-brand-navy">Download Certificates</h3>
-          <p className="text-gray-600 mb-6">
-            Access our official certifications and compliance documents. All documents are provided in PDF format.
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            <a href="#" className="flex items-center p-3 border border-gray-200 rounded-md hover:border-brand-orange hover:bg-brand-orange/5 transition-colors">
-              <ShieldCheck size={20} className="text-brand-orange mr-2" />
-              <span>RTA Certificate</span>
-            </a>
-            <a href="#" className="flex items-center p-3 border border-gray-200 rounded-md hover:border-brand-orange hover:bg-brand-orange/5 transition-colors">
-              <ShieldCheck size={20} className="text-brand-orange mr-2" />
-              <span>GIG Insurance Certificate</span>
-            </a>
-            <a href="#" className="flex items-center p-3 border border-gray-200 rounded-md hover:border-brand-orange hover:bg-brand-orange/5 transition-colors">
-              <Award size={20} className="text-brand-orange mr-2" />
-              <span>ISO 9001:2015</span>
-            </a>
-            <a href="#" className="flex items-center p-3 border border-gray-200 rounded-md hover:border-brand-orange hover:bg-brand-orange/5 transition-colors">
-              <Award size={20} className="text-brand-orange mr-2" />
-              <span>ISO 14001:2015</span>
-            </a>
-            <a href="#" className="flex items-center p-3 border border-gray-200 rounded-md hover:border-brand-orange hover:bg-brand-orange/5 transition-colors">
-              <Award size={20} className="text-brand-orange mr-2" />
-              <span>HACCP Certification</span>
-            </a>
-            <a href="#" className="flex items-center p-3 border border-gray-200 rounded-md hover:border-brand-orange hover:bg-brand-orange/5 transition-colors">
-              <Award size={20} className="text-brand-orange mr-2" />
-              <span>GDP Compliance</span>
-            </a>
-          </div>
         </div>
       </section>
     </Layout>
