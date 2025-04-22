@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
@@ -34,7 +35,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
               <img
-                className="h-14 w-auto drop-shadow-md transition-transform duration-300 hover:scale-105"
+                className="h-20 w-auto drop-shadow-md transition-transform duration-300 hover:scale-105"
                 src="/lovable-uploads/c414fd89-7210-4891-8b3e-b4be72fdb25d.png"
                 alt="GravityShift Logo"
               />
