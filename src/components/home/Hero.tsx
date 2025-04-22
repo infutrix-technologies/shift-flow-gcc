@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
@@ -12,19 +13,17 @@ const Hero = ({ videoSrc }: HeroProps) => {
   
   const handleTrackingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle tracking number submission
     console.log('Tracking number submitted:', trackingNumber);
-    // Logic to track shipment
   };
 
   return (
     <div className="relative bg-brand-navy">
       <div className="absolute inset-0 overflow-hidden z-0">
-        <div className="absolute inset-0 flex items-center justify-center opacity-20">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20 z-0">
           <img
             src="/lovable-uploads/ae375e28-4351-41e5-8d71-ff77c43b924a.png"
             alt="GravityShift Symbol"
-            className="w-96 h-96 animate-[spin_20s_linear_infinite]"
+            className="w-96 h-96 animate-spin duration-[20s] ease-linear infinite origin-center"
           />
         </div>
         {videoSrc ? (
@@ -44,9 +43,16 @@ const Hero = ({ videoSrc }: HeroProps) => {
       
       <div className="relative z-10 section-container min-h-[calc(100vh-80px)] flex flex-col justify-center">
         <div className="max-w-3xl text-white">
-          <h1 className="heading-1 mb-6 text-white animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            Transforming Logistics with Innovation and Reliability
-          </h1>
+          <div className="flex items-center mb-6">
+            <img
+              src="/lovable-uploads/ae375e28-4351-41e5-8d71-ff77c43b924a.png"
+              alt="GravityShift Logo"
+              className="w-24 h-24 mr-4 animate-pulse duration-[2s] ease-in-out infinite"
+            />
+            <h1 className="heading-1 text-white animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              Transforming Logistics with Innovation and Reliability
+            </h1>
+          </div>
           
           <p className="text-xl mb-8 text-gray-300 animate-fade-in" style={{ animationDelay: '0.4s' }}>
             GravityShift delivers technology-driven, multi-modal logistics solutions across the GCC region,
@@ -60,7 +66,7 @@ const Hero = ({ videoSrc }: HeroProps) => {
               </Link>
             </Button>
             
-            <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10 flex items-center gap-2">
+            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10 flex items-center gap-2">
               <Link to="/about">
                 Learn More About Our Services <ArrowRight size={18} />
               </Link>
@@ -77,9 +83,10 @@ const Hero = ({ videoSrc }: HeroProps) => {
                 value={trackingNumber}
                 onChange={(e) => setTrackingNumber(e.target.value)}
                 required
+                disabled
               />
-              <Button type="submit" className="rounded-l-none flex items-center">
-                <Search size={18} className="mr-2" /> Track
+              <Button type="submit" disabled className="rounded-l-none flex items-center">
+                <Search size={18} className="mr-2" /> Track (Coming Soon)
               </Button>
             </form>
           </div>
