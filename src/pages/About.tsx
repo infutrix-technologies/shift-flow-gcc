@@ -34,11 +34,7 @@ const About = () => {
 
   const certifications = [
     { name: 'RTA Approved', icon: <ShieldCheck size={16} /> },
-    { name: 'GIG Insured', icon: <ShieldCheck size={16} /> },
-    { name: 'ISO 9001:2015', icon: <Award size={16} /> },
-    { name: 'ISO 14001:2015', icon: <Award size={16} /> },
-    { name: 'HACCP Certified', icon: <Award size={16} /> },
-    { name: 'GDP Compliant', icon: <Award size={16} /> },
+    { name: 'GIG Insured', icon: <ShieldCheck size={16} /> }
   ];
 
   return (
@@ -62,14 +58,9 @@ const About = () => {
           <div className="order-2 lg:order-1">
             <h2 className="heading-2 mb-6 text-brand-navy">Our Journey</h2>
             <p className="text-gray-600 mb-4">
-              Founded in 2015, GravityShift emerged from a vision to revolutionize logistics across the GCC region. 
+              GravityShift emerged from a vision to revolutionize logistics across the GCC region. 
               We identified critical gaps in the market: limited technological integration, lack of transparency, and 
               inefficient multi-modal connections.
-            </p>
-            <p className="text-gray-600 mb-4">
-              Starting with a small fleet of vehicles in Dubai, we quickly expanded by focusing on technology-driven 
-              solutions that provided unparalleled visibility and efficiency. Today, we operate across all GCC countries 
-              with a comprehensive suite of logistics services.
             </p>
             <p className="text-gray-600">
               Our name, GravityShift, represents our ability to overcome logistics challenges that seem as immovable as gravity itself. 

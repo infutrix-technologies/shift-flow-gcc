@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
@@ -21,6 +20,13 @@ const Hero = ({ videoSrc }: HeroProps) => {
   return (
     <div className="relative bg-brand-navy">
       <div className="absolute inset-0 overflow-hidden z-0">
+        <div className="absolute inset-0 flex items-center justify-center opacity-20">
+          <img
+            src="/lovable-uploads/ae375e28-4351-41e5-8d71-ff77c43b924a.png"
+            alt="GravityShift Symbol"
+            className="w-96 h-96 animate-[spin_20s_linear_infinite]"
+          />
+        </div>
         {videoSrc ? (
           <video 
             className="w-full h-full object-cover opacity-40"
@@ -54,9 +60,9 @@ const Hero = ({ videoSrc }: HeroProps) => {
               </Link>
             </Button>
             
-            <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
-              <Link to="/about" className="flex items-center">
-                Learn More <ArrowRight size={18} className="ml-2" />
+            <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white/10 flex items-center gap-2">
+              <Link to="/about">
+                Learn More About Our Services <ArrowRight size={18} />
               </Link>
             </Button>
           </div>

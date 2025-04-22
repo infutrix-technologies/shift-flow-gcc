@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -31,17 +30,10 @@ const App = () => (
 
           {/* Service Routes */}
           <Route path="/services/land-freight" element={<LandFreight />} />
-          {/* Placeholder routes that will be implemented later */}
           <Route path="/services/multi-modal" element={<LandFreight />} />
           <Route path="/services/temperature-controlled" element={<LandFreight />} />
           <Route path="/services/warehousing" element={<LandFreight />} />
           <Route path="/services/contract-logistics" element={<LandFreight />} />
-          
-          {/* Technology Route */}
-          <Route path="/technology" element={<About />} />
-          
-          {/* Fleet Route */}
-          <Route path="/fleet" element={<About />} />
           
           {/* SOPs Route */}
           <Route path="/sops" element={<About />} />

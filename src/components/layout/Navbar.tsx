@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
@@ -59,9 +58,7 @@ const Navbar = () => {
               </div>
             </div>
 
-            <Link to="/technology" className="nav-link">Technology</Link>
             <Link to="/about" className="nav-link">About Us</Link>
-            <Link to="/fleet" className="nav-link">Fleet Capabilities</Link>
             <Link to="/sops" className="nav-link">SOPs</Link>
             <Link to="/contact" className="nav-link">Contact</Link>
           </div>
@@ -107,9 +104,7 @@ const Navbar = () => {
                 <Link to="/services/contract-logistics" className="block px-3 py-2 rounded-md text-sm font-medium nav-link">Contract Logistics & Fleet Leasing</Link>
               </div>
             </div>
-            <Link to="/technology" className="block px-3 py-2 rounded-md text-base font-medium nav-link">Technology</Link>
             <Link to="/about" className="block px-3 py-2 rounded-md text-base font-medium nav-link">About Us</Link>
-            <Link to="/fleet" className="block px-3 py-2 rounded-md text-base font-medium nav-link">Fleet Capabilities</Link>
             <Link to="/sops" className="block px-3 py-2 rounded-md text-base font-medium nav-link">SOPs</Link>
             <Link to="/contact" className="block px-3 py-2 rounded-md text-base font-medium nav-link">Contact</Link>
           </div>
