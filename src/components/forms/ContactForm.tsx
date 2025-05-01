@@ -1,70 +1,98 @@
-
-import { useState } from 'react';
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
+import emailjs from "@emailjs/browser";
 
 interface ContactFormProps {
-  type?: 'contact' | 'quote';
+  type?: "contact" | "quote";
   className?: string;
 }
 
-const ContactForm = ({ type = 'contact', className = '' }: ContactFormProps) => {
+const ContactForm = ({
+  type = "contact",
+  className = "",
+}: ContactFormProps) => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const [formData, setFormData] = useState({
-    name: '',
-    company: '',
-    email: '',
-    phone: '',
-    serviceType: '',
-    originCountry: '',
-    destinationCountry: '',
-    cargoType: '',
-    weight: '',
-    message: ''
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    serviceType: "",
+    originCountry: "",
+    destinationCountry: "",
+    cargoType: "",
+    weight: "",
+    message: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({
-        title: "Form submitted successfully",
-        description: "We've received your request and will get back to you soon.",
+    toast({ title: "Sending message...", duration: Infinity });
+
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_APP_SERVICE_ID!,
+        import.meta.env.VITE_APP_TEMPLATE_ID!,
+        e.currentTarget,
+        import.meta.env.VITE_APP_PUBLIC_KEY!
+      )
+      .then(
+        (result) => {
+          console.log(result);
+          toast({
+            title: `Thank you ${formData.name}, your message has been sent ✅`,
+            duration: 5000,
+          });
+          setFormData({
+            name: "",
+            company: "",
+            email: "",
+            phone: "",
+            serviceType: "",
+            originCountry: "",
+            destinationCountry: "",
+            cargoType: "",
+            weight: "",
+            message: "",
+          });
+        },
+        (error) => {
+          toast({
+            title: "Message not sent ❌",
+            description: "Something went wrong. Please try again later.",
+            variant: "destructive",
+          });
+        }
+      )
+      .finally(() => {
+        setIsSubmitting(false);
       });
-      // Reset form
-      setFormData({
-        name: '',
-        company: '',
-        email: '',
-        phone: '',
-        serviceType: '',
-        originCountry: '',
-        destinationCountry: '',
-        cargoType: '',
-        weight: '',
-        message: ''
-      });
-    }, 1000);
   };
 
-  const isQuoteForm = type === 'quote';
+  const isQuoteForm = type === "quote";
 
   return (
     <form onSubmit={handleSubmit} className={`space-y-6 ${className}`}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Name */}
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
             Full Name *
           </label>
           <input
@@ -81,8 +109,11 @@ const ContactForm = ({ type = 'contact', className = '' }: ContactFormProps) => 
 
         {/* Company */}
         <div>
-          <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
-            Company Name {isQuoteForm && '*'}
+          <label
+            htmlFor="company"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Company Name {isQuoteForm && "*"}
           </label>
           <input
             id="company"
@@ -98,7 +129,10 @@ const ContactForm = ({ type = 'contact', className = '' }: ContactFormProps) => 
 
         {/* Email */}
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
             Email Address *
           </label>
           <input
@@ -115,7 +149,10 @@ const ContactForm = ({ type = 'contact', className = '' }: ContactFormProps) => 
 
         {/* Phone */}
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+          <label
+            htmlFor="phone"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
             Phone Number *
           </label>
           <input
@@ -134,7 +171,10 @@ const ContactForm = ({ type = 'contact', className = '' }: ContactFormProps) => 
           <>
             {/* Service Type */}
             <div>
-              <label htmlFor="serviceType" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="serviceType"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Service Type *
               </label>
               <select
@@ -148,7 +188,9 @@ const ContactForm = ({ type = 'contact', className = '' }: ContactFormProps) => 
                 <option value="">Select service type</option>
                 <option value="landFreight">Land Freight & Cross-Border</option>
                 <option value="multiModal">Multi-Modal Logistics</option>
-                <option value="temperatureControlled">Temperature-Controlled</option>
+                <option value="temperatureControlled">
+                  Temperature-Controlled
+                </option>
                 <option value="warehousing">Warehousing & Distribution</option>
                 <option value="contractLogistics">Contract Logistics</option>
               </select>
@@ -156,7 +198,10 @@ const ContactForm = ({ type = 'contact', className = '' }: ContactFormProps) => 
 
             {/* Origin Country */}
             <div>
-              <label htmlFor="originCountry" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="originCountry"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Origin Country *
               </label>
               <input
@@ -173,7 +218,10 @@ const ContactForm = ({ type = 'contact', className = '' }: ContactFormProps) => 
 
             {/* Destination Country */}
             <div>
-              <label htmlFor="destinationCountry" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="destinationCountry"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Destination Country *
               </label>
               <input
@@ -190,7 +238,10 @@ const ContactForm = ({ type = 'contact', className = '' }: ContactFormProps) => 
 
             {/* Cargo Type */}
             <div>
-              <label htmlFor="cargoType" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="cargoType"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Cargo Type *
               </label>
               <input
@@ -207,7 +258,10 @@ const ContactForm = ({ type = 'contact', className = '' }: ContactFormProps) => 
 
             {/* Weight */}
             <div>
-              <label htmlFor="weight" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="weight"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Approximate Weight (kg)
               </label>
               <input
@@ -226,8 +280,11 @@ const ContactForm = ({ type = 'contact', className = '' }: ContactFormProps) => 
 
       {/* Message */}
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-          {isQuoteForm ? 'Additional Requirements' : 'Message'} *
+        <label
+          htmlFor="message"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          {isQuoteForm ? "Additional Requirements" : "Message"} *
         </label>
         <textarea
           id="message"
@@ -237,16 +294,24 @@ const ContactForm = ({ type = 'contact', className = '' }: ContactFormProps) => 
           value={formData.message}
           onChange={handleChange}
           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-orange"
-          placeholder={isQuoteForm ? 'Provide any additional details about your shipment' : 'How can we help you?'}
+          placeholder={
+            isQuoteForm
+              ? "Provide any additional details about your shipment"
+              : "How can we help you?"
+          }
         />
       </div>
 
-      <Button 
-        type="submit" 
-        disabled={isSubmitting} 
+      <Button
+        type="submit"
+        disabled={isSubmitting}
         className="w-full md:w-auto"
       >
-        {isSubmitting ? 'Submitting...' : isQuoteForm ? 'Request Quote' : 'Send Message'}
+        {isSubmitting
+          ? "Submitting..."
+          : isQuoteForm
+          ? "Request Quote"
+          : "Send Message"}
       </Button>
     </form>
   );
