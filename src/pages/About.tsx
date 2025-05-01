@@ -1,40 +1,40 @@
 import Layout from "@/components/layout/Layout";
 import SectionHeader from "@/components/shared/SectionHeader";
 import CertificationBadge from "@/components/shared/CertificationBadge";
-import { 
-  ShieldCheck, 
-  Award, 
-  Users,
-  CheckCircle2
-} from 'lucide-react';
+import { ShieldCheck, Award, Users, CheckCircle2 } from "lucide-react";
 
 const About = () => {
   const values = [
     {
-      name: 'Innovation',
-      description: 'We continuously embrace new technologies and approaches to drive efficiency and service excellence.'
+      name: "Innovation",
+      description:
+        "We continuously embrace new technologies and approaches to drive efficiency and service excellence.",
     },
     {
-      name: 'Integrity',
-      description: 'We operate with complete transparency and honesty in all our interactions with clients, partners, and employees.'
+      name: "Integrity",
+      description:
+        "We operate with complete transparency and honesty in all our interactions with clients, partners, and employees.",
     },
     {
-      name: 'Reliability',
-      description: 'We deliver on our promises and maintain consistent service quality across all operations.'
+      name: "Reliability",
+      description:
+        "We deliver on our promises and maintain consistent service quality across all operations.",
     },
     {
-      name: 'Sustainability',
-      description: 'We are committed to reducing our environmental footprint and implementing eco-friendly logistics practices.'
+      name: "Sustainability",
+      description:
+        "We are committed to reducing our environmental footprint and implementing eco-friendly logistics practices.",
     },
     {
-      name: 'Customer-Centricity',
-      description: 'We place our customers at the heart of everything we do, tailoring solutions to meet their specific needs.'
-    }
+      name: "Customer-Centricity",
+      description:
+        "We place our customers at the heart of everything we do, tailoring solutions to meet their specific needs.",
+    },
   ];
 
   const certifications = [
-    { name: 'RTA Approved', icon: <ShieldCheck size={16} /> },
-    { name: 'GIG Insured', icon: <ShieldCheck size={16} /> }
+    { name: "RTA Approved", icon: <ShieldCheck size={16} /> },
+    { name: "GIG Insured", icon: <ShieldCheck size={16} /> },
   ];
 
   return (
@@ -58,17 +58,26 @@ const About = () => {
           <div className="order-2 lg:order-1">
             <h2 className="heading-2 mb-6 text-brand-navy">Our Journey</h2>
             <p className="text-gray-600 mb-4">
-              GravityShift emerged from a vision to revolutionize logistics across the GCC region. 
-              We identified critical gaps in the market: limited technological integration, lack of transparency, and 
+              GravityShift emerged from a vision to revolutionize logistics
+              across the GCC region. We identified critical gaps in the market:
+              limited technological integration, lack of transparency, and
               inefficient multi-modal connections.
             </p>
             <p className="text-gray-600">
-              Our name, GravityShift, represents our ability to overcome logistics challenges that seem as immovable as gravity itself. 
-              We shift perspectives, bottlenecks, and boundaries to deliver exceptional logistics solutions.
+              Our name, GravityShift, represents our ability to overcome
+              logistics challenges that seem as immovable as gravity itself. We
+              shift perspectives, bottlenecks, and boundaries to deliver
+              exceptional logistics solutions.
             </p>
           </div>
-          <div className="order-1 lg:order-2 bg-gray-100 rounded-lg overflow-hidden h-80 flex items-center justify-center">
-            <div className="text-gray-500">Company History Image</div>
+          <div className="order-1 lg:order-2 bg-gray-100 rounded-lg overflow-hidden  flex items-center justify-center">
+            <div className="flex justify-center items-center h-full my-6">
+              <img
+                src="/lovable-uploads/ae375e28-4351-41e5-8d71-ff77c43b924a.png"
+                alt="GravityShift Symbol"
+                className="w-96 h-96 animate-spin duration-[20s] ease-linear infinite origin-center"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -83,28 +92,41 @@ const About = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold mb-4 text-brand-navy">Our Vision</h3>
+            <h3 className="text-xl font-semibold mb-4 text-brand-navy">
+              Our Vision
+            </h3>
             <p className="text-gray-600 italic">
-              "To be the most trusted logistics partner globally, setting new standards for efficiency and sustainability."
+              "To be the most trusted logistics partner globally, setting new
+              standards for efficiency and sustainability."
             </p>
           </div>
-          
+
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold mb-4 text-brand-navy">Our Mission</h3>
+            <h3 className="text-xl font-semibold mb-4 text-brand-navy">
+              Our Mission
+            </h3>
             <p className="text-gray-600 italic">
-              "Revolutionizing freight through digital transformation with precision, speed, and transparency."
+              "Revolutionizing freight through digital transformation with
+              precision, speed, and transparency."
             </p>
           </div>
         </div>
 
-        <h3 className="text-2xl font-semibold mb-6 text-brand-navy">Our Core Values</h3>
+        <h3 className="text-2xl font-semibold mb-6 text-brand-navy">
+          Our Core Values
+        </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {values.map((value, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-md flex flex-col">
+            <div
+              key={index}
+              className="bg-white p-6 rounded-lg shadow-md flex flex-col"
+            >
               <div className="text-brand-orange bg-brand-orange/10 p-2 rounded-full w-12 h-12 flex items-center justify-center mb-4">
                 <CheckCircle2 size={24} />
               </div>
-              <h4 className="text-lg font-semibold mb-2 text-brand-navy">{value.name}</h4>
+              <h4 className="text-lg font-semibold mb-2 text-brand-navy">
+                {value.name}
+              </h4>
               <p className="text-gray-600 flex-grow">{value.description}</p>
             </div>
           ))}

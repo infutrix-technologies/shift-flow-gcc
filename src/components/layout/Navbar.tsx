@@ -1,6 +1,5 @@
-
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   Menu,
@@ -11,7 +10,7 @@ import {
   Users,
   ChevronDown,
   Search,
-  X
+  X,
 } from "lucide-react";
 
 const Navbar = () => {
@@ -35,7 +34,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
               <img
-                className="h-20 w-auto drop-shadow-md transition-transform duration-300 hover:scale-105"
+                className="h-20 w-auto transition-transform duration-300"
                 src="/lovable-uploads/c414fd89-7210-4891-8b3e-b4be72fdb25d.png"
                 alt="GravityShift Logo"
               />
@@ -44,29 +43,67 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="nav-link">Home</Link>
+            <Link to="/" className="nav-link">
+              Home
+            </Link>
 
             <div className="relative group">
               <button className="nav-link flex items-center">
                 Services <ChevronDown size={16} className="ml-1" />
               </button>
               <div className="absolute left-0 mt-2 w-60 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 py-2">
-                <Link to="/services/land-freight" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Land Freight & Cross-Border Trucking</Link>
-                <Link to="/services/multi-modal" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Multi-Modal Logistics Solutions</Link>
-                <Link to="/services/temperature-controlled" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Temperature-Controlled Logistics</Link>
-                <Link to="/services/warehousing" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Warehousing & Distribution</Link>
-                <Link to="/services/contract-logistics" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contract Logistics & Fleet Leasing</Link>
+                <Link
+                  to="/services/land-freight"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Land Freight & Cross-Border Trucking
+                </Link>
+                <Link
+                  to="/services/multi-modal"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Multi-Modal Logistics Solutions
+                </Link>
+                <Link
+                  to="/services/temperature-controlled"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Temperature-Controlled Logistics
+                </Link>
+                <Link
+                  to="/services/warehousing"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Warehousing & Distribution
+                </Link>
+                <Link
+                  to="/services/contract-logistics"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Contract Logistics & Fleet Leasing
+                </Link>
               </div>
             </div>
 
-            <Link to="/about" className="nav-link">About Us</Link>
-            <Link to="/sops" className="nav-link">SOPs</Link>
-            <Link to="/contact" className="nav-link">Contact</Link>
+            <Link to="/about" className="nav-link">
+              About Us
+            </Link>
+            <Link to="/sops" className="nav-link">
+              SOPs
+            </Link>
+            <Link to="/contact" className="nav-link">
+              Contact
+            </Link>
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
             {/* Showing track button as disabled with coming soon */}
-            <Button disabled variant="outline" className="flex items-center cursor-not-allowed" title="Tracking facility coming soon">
+            <Button
+              disabled
+              variant="outline"
+              className="flex items-center cursor-not-allowed"
+              title="Tracking facility coming soon"
+            >
               <Search size={16} className="mr-1" /> Track (Coming Soon)
             </Button>
             <Button asChild>
@@ -94,24 +131,77 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white shadow-lg">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link to="/" className="block px-3 py-2 rounded-md text-base font-medium nav-link">Home</Link>
+            <Link
+              to="/"
+              className="block px-3 py-2 rounded-md text-base font-medium nav-link"
+            >
+              Home
+            </Link>
             <div>
-              <div className="px-3 py-2 rounded-md text-base font-medium nav-link">Services</div>
+              <div className="px-3 py-2 rounded-md text-base font-medium nav-link">
+                Services
+              </div>
               <div className="pl-6 space-y-1">
-                <Link to="/services/land-freight" className="block px-3 py-2 rounded-md text-sm font-medium nav-link">Land Freight & Cross-Border Trucking</Link>
-                <Link to="/services/multi-modal" className="block px-3 py-2 rounded-md text-sm font-medium nav-link">Multi-Modal Logistics Solutions</Link>
-                <Link to="/services/temperature-controlled" className="block px-3 py-2 rounded-md text-sm font-medium nav-link">Temperature-Controlled Logistics</Link>
-                <Link to="/services/warehousing" className="block px-3 py-2 rounded-md text-sm font-medium nav-link">Warehousing & Distribution</Link>
-                <Link to="/services/contract-logistics" className="block px-3 py-2 rounded-md text-sm font-medium nav-link">Contract Logistics & Fleet Leasing</Link>
+                <Link
+                  to="/services/land-freight"
+                  className="block px-3 py-2 rounded-md text-sm font-medium nav-link"
+                >
+                  Land Freight & Cross-Border Trucking
+                </Link>
+                <Link
+                  to="/services/multi-modal"
+                  className="block px-3 py-2 rounded-md text-sm font-medium nav-link"
+                >
+                  Multi-Modal Logistics Solutions
+                </Link>
+                <Link
+                  to="/services/temperature-controlled"
+                  className="block px-3 py-2 rounded-md text-sm font-medium nav-link"
+                >
+                  Temperature-Controlled Logistics
+                </Link>
+                <Link
+                  to="/services/warehousing"
+                  className="block px-3 py-2 rounded-md text-sm font-medium nav-link"
+                >
+                  Warehousing & Distribution
+                </Link>
+                <Link
+                  to="/services/contract-logistics"
+                  className="block px-3 py-2 rounded-md text-sm font-medium nav-link"
+                >
+                  Contract Logistics & Fleet Leasing
+                </Link>
               </div>
             </div>
-            <Link to="/about" className="block px-3 py-2 rounded-md text-base font-medium nav-link">About Us</Link>
-            <Link to="/sops" className="block px-3 py-2 rounded-md text-base font-medium nav-link">SOPs</Link>
-            <Link to="/contact" className="block px-3 py-2 rounded-md text-base font-medium nav-link">Contact</Link>
+            <Link
+              to="/about"
+              className="block px-3 py-2 rounded-md text-base font-medium nav-link"
+            >
+              About Us
+            </Link>
+            <Link
+              to="/sops"
+              className="block px-3 py-2 rounded-md text-base font-medium nav-link"
+            >
+              SOPs
+            </Link>
+            <Link
+              to="/contact"
+              className="block px-3 py-2 rounded-md text-base font-medium nav-link"
+            >
+              Contact
+            </Link>
           </div>
           <div className="px-2 py-3 flex flex-col space-y-2">
             {/* Disabled track shipment button with "Coming Soon" label */}
-            <Button disabled variant="outline" size="sm" className="flex items-center justify-center cursor-not-allowed" title="Tracking facility coming soon">
+            <Button
+              disabled
+              variant="outline"
+              size="sm"
+              className="flex items-center justify-center cursor-not-allowed"
+              title="Tracking facility coming soon"
+            >
               <Search size={16} className="mr-1" /> Track Shipment (Coming Soon)
             </Button>
             <Button asChild size="sm">
