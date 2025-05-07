@@ -22,7 +22,7 @@ const Hero = ({ videoSrc }: HeroProps) => {
           <img
             src="/lovable-uploads/ae375e28-4351-41e5-8d71-ff77c43b924a.png"
             alt="GravityShift Symbol"
-            className="w-96 h-96 invert grayscale opacity-10 animate-spin duration-[20s] ease-linear infinite origin-center"
+            className="w-96 h-96 invert grayscale opacity-10 animate-spin duration-custom ease-linear infinite origin-center"
           />
         </div>
         {videoSrc ? (
@@ -46,7 +46,7 @@ const Hero = ({ videoSrc }: HeroProps) => {
             <img
               src="/lovable-uploads/ae375e28-4351-41e5-8d71-ff77c43b924a.png"
               alt="GravityShift Logo"
-              className="w-24 h-24 mr-4 invert grayscale animate-spin duration-[2s] ease-in-out infinite"
+              className="w-24 h-24 mr-4 invert grayscale animate-spin duration-custom infinite"
             />
             <h1
               className="heading-1 text-white animate-fade-in"

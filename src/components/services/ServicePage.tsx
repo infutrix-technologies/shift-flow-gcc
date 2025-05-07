@@ -140,7 +140,7 @@ const ServicePage = ({
                 <img
                   src="/lovable-uploads/ae375e28-4351-41e5-8d71-ff77c43b924a.png"
                   alt="GravityShift Symbol"
-                  className="w-96 h-96 animate-spin duration-[20s] ease-linear infinite origin-center"
+                  className="w-96 h-96 animate-spin duration-custom ease-linear infinite origin-center"
                 />
               </div>
             )}

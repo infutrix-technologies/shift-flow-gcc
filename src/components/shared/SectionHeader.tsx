@@ -1,27 +1,26 @@
-
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 interface SectionHeaderProps {
   title: string;
   subtitle?: string;
   description?: string;
-  align?: 'left' | 'center' | 'right';
+  align?: "left" | "center" | "right";
   className?: string;
   children?: ReactNode;
 }
 
-const SectionHeader = ({ 
-  title, 
-  subtitle, 
-  description, 
-  align = 'center', 
-  className = '',
-  children
+const SectionHeader = ({
+  title,
+  subtitle,
+  description,
+  align = "center",
+  className = "",
+  children,
 }: SectionHeaderProps) => {
   const alignClass = {
-    left: 'text-left',
-    center: 'text-center mx-auto',
-    right: 'text-right ml-auto',
+    left: "text-left",
+    center: "text-center mx-auto",
+    right: "text-right ml-auto",
   };
 
   return (
@@ -31,12 +30,8 @@ const SectionHeader = ({
           {subtitle}
         </span>
       )}
-      <h2 className="heading-2 mb-4 text-brand-navy">{title}</h2>
-      {description && (
-        <p className="text-gray-600 text-lg">
-          {description}
-        </p>
-      )}
+      <h2 className="heading-2 mb-4 text-white">{title}</h2>
+      {description && <p className="text-white/80 text-lg">{description}</p>}
       {children}
     </div>
   );

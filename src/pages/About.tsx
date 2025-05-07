@@ -40,11 +40,16 @@ const About = () => {
   return (
     <Layout>
       {/* Page Header */}
-      <div className="bg-brand-navy text-white py-20">
+      <div className="bg-transparent relative text-white py-20">
+        <img
+          src="/banner.jpg"
+          alt="Banner"
+          className="top-0 left-0 absolute -z-10 w-full h-full object-cover brightness-50"
+        />
         <div className="section-container">
           <SectionHeader
             title="About GravityShift"
-            subtitle="OUR STORY"
+            subtitle="ABOUT US"
             description="Born to Move What Others Can't – A narrative of innovation and technology in logistics."
             align="center"
             className="text-white"
@@ -56,18 +61,21 @@ const About = () => {
       <section className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1">
-            <h2 className="heading-2 mb-6 text-brand-navy">Our Journey</h2>
+            <h2 className="heading-2 mb-6 text-brand-navy">About Us</h2>
             <p className="text-gray-600 mb-4">
-              GravityShift emerged from a vision to revolutionize logistics
-              across the GCC region. We identified critical gaps in the market:
-              limited technological integration, lack of transparency, and
-              inefficient multi-modal connections.
+              At GravityShift, we specialize in delivering smart, reliable, and
+              efficient logistics solutions across the UAE and beyond. From
+              freight forwarding and customs clearance to warehousing and
+              last-mile delivery, our integrated services are designed to keep
+              your supply chain moving smoothly.
             </p>
             <p className="text-gray-600">
-              Our name, GravityShift, represents our ability to overcome
-              logistics challenges that seem as immovable as gravity itself. We
-              shift perspectives, bottlenecks, and boundaries to deliver
-              exceptional logistics solutions.
+              Headquartered in Dubai, we combine local expertise with global
+              reach, using technology-driven processes to ensure transparency,
+              speed, and cost-effectiveness at every stage. Whether you’re
+              shipping regionally or internationally, GravityShift is your
+              trusted logistics partner for end-to-end solutions that adapt to
+              your business needs.
             </p>
           </div>
           <div className="order-1 lg:order-2 bg-gray-100 rounded-lg overflow-hidden  flex items-center justify-center">
@@ -75,7 +83,7 @@ const About = () => {
               <img
                 src="/lovable-uploads/ae375e28-4351-41e5-8d71-ff77c43b924a.png"
                 alt="GravityShift Symbol"
-                className="w-96 h-96 animate-spin duration-[20s] ease-linear infinite origin-center"
+                className="w-96 h-96 animate-spin duration-custom ease-linear infinite origin-center"
               />
             </div>
           </div>

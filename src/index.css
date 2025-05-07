@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -93,41 +92,45 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  .duration-custom {
+    animation-duration: 5s !important;
+  }
 }
 
 @layer components {
   .section-container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20;
   }
-  
+
   .heading-1 {
     @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
   }
-  
+
   .heading-2 {
     @apply text-3xl md:text-4xl font-bold;
   }
-  
+
   .heading-3 {
     @apply text-2xl md:text-3xl font-semibold;
   }
-  
+
   .btn-primary {
     @apply bg-brand-orange hover:bg-brand-orange/90 text-white font-medium py-2 px-6 rounded-md transition-colors duration-200;
   }
-  
+
   .btn-secondary {
     @apply bg-brand-navy hover:bg-brand-navy/90 text-white font-medium py-2 px-6 rounded-md transition-colors duration-200;
   }
-  
+
   .btn-outline {
     @apply border-2 border-brand-orange text-brand-orange hover:bg-brand-orange/10 font-medium py-2 px-6 rounded-md transition-colors duration-200;
   }
-  
+
   .nav-link {
     @apply text-gray-700 hover:text-brand-orange transition-colors duration-200;
   }
-  
+
   .active-nav-link {
     @apply text-brand-orange font-medium;
   }

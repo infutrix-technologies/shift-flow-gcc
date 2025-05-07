@@ -156,11 +156,11 @@ const Footer = () => {
               </li>
               <li className="text-gray-400 flex items-center">
                 <Mail size={18} className="mr-2 flex-shrink-0" />
-                <span>info@gravityshift.com</span>
+                <span>info@gravityshift.ae</span>
               </li>
               <li className="text-gray-400 flex items-center">
                 <Globe size={18} className="mr-2 flex-shrink-0" />
-                <span>www.gravityshift.com</span>
+                <span>www.gravityshift.ae</span>
               </li>
             </ul>
             <Button className="mt-4 bg-brand-orange hover:bg-brand-orange/90 w-full">

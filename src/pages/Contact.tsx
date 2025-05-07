@@ -32,7 +32,12 @@ const Contact = () => {
   return (
     <Layout>
       {/* Page Header */}
-      <div className="bg-brand-navy text-white py-20">
+      <div className="bg-transparent relative text-white py-20">
+        <img
+          src="/banner.jpg"
+          alt="Banner"
+          className="top-0 left-0 absolute -z-10 w-full h-full object-cover brightness-50"
+        />
         <div className="section-container">
           <SectionHeader
             title="Contact GravityShift"
@@ -83,8 +88,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-medium text-brand-navy">Email</h4>
-                  <p className="text-gray-600">info@gravityshift.com</p>
-                  <p className="text-gray-600">support@gravityshift.com</p>
+                  <p className="text-gray-600">info@gravityshift.ae</p>
+                  <p className="text-gray-600">support@gravityshift.ae</p>
                 </div>
               </div>
 
@@ -99,7 +104,7 @@ const Contact = () => {
                   </p>
                   <p className="text-gray-600">Friday - Saturday: Closed</p>
                   <p className="text-gray-600 mt-2 font-medium">
-                    24/7 Support Hotline: +971 800 SHIFT
+                    24/7 Support Hotline: +971 5515 44123
                   </p>
                 </div>
               </div>
