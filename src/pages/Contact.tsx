@@ -6,6 +6,7 @@ import ContactForm from "@/components/forms/ContactForm";
 import MapComponent from "@/components/shared/MapComponent";
 import { MapPin, Phone, Mail, Clock, MessageSquare, Users } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { FaWhatsapp } from "react-icons/fa";
 
 const Contact = () => {
   const [activeTab, setActiveTab] = useState("contact");
@@ -66,7 +67,8 @@ const Contact = () => {
                 <div>
                   <h4 className="font-medium text-brand-navy">Headquarters</h4>
                   <p className="text-gray-600">
-                    Dubai Silicon Oasis, Dubai, UAE
+                    Dubai Silicon Oasis, Dubai, UAEOffice 4, S1-59, Property
+                    Investment Park, DIP-1, Dubai – 500001, UNITED ARAB EMIRATES
                   </p>
                 </div>
               </div>
@@ -77,8 +79,10 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-medium text-brand-navy">Phone</h4>
-                  <p className="text-gray-600">+971 4 123 4567</p>
-                  <p className="text-gray-600">+971 50 987 6543 (WhatsApp)</p>
+                  {/* <p className="text-gray-600">+971 4 123 4567</p> */}
+                  <p className="text-gray-600 flex flex-row items-center gap-2">
+                    +971 52 934 9419 <FaWhatsapp />
+                  </p>
                 </div>
               </div>
 
@@ -89,7 +93,7 @@ const Contact = () => {
                 <div>
                   <h4 className="font-medium text-brand-navy">Email</h4>
                   <p className="text-gray-600">info@gravityshift.ae</p>
-                  <p className="text-gray-600">support@gravityshift.ae</p>
+                  {/* <p className="text-gray-600">support@gravityshift.ae</p> */}
                 </div>
               </div>
 
@@ -100,11 +104,7 @@ const Contact = () => {
                 <div>
                   <h4 className="font-medium text-brand-navy">Working Hours</h4>
                   <p className="text-gray-600">
-                    Sunday - Thursday: 8:00 AM - 6:00 PM
-                  </p>
-                  <p className="text-gray-600">Friday - Saturday: Closed</p>
-                  <p className="text-gray-600 mt-2 font-medium">
-                    24/7 Support Hotline: +971 5515 44123
+                    Monday to Sunday, 8:00 AM – 7:00 PM (GMT)
                   </p>
                 </div>
               </div>
