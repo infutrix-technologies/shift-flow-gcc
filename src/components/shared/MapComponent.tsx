@@ -3,6 +3,17 @@ import L from "leaflet";
 import { MapPin } from "lucide-react";
 import "leaflet/dist/leaflet.css";
 
+// Fix default icon issue in Leaflet (important!)
+// delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl:
+    "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png",
+  iconUrl:
+    "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+  shadowUrl:
+    "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
+});
+
 const countries = [
   { name: "UAE", city: "Dubai", coords: [25.276987, 55.296249] },
   { name: "KSA", city: "Riyadh", coords: [24.7136, 46.6753] },
