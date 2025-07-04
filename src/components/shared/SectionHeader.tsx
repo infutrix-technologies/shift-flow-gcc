@@ -30,8 +30,8 @@ const SectionHeader = ({
           {subtitle}
         </span>
       )}
-      <h2 className="heading-2 mb-4 text-[#1A1F2C]">{title}</h2>
-      {description && <p className="text-[#1A1F2C] text-lg">{description}</p>}
+      <h2 className={`heading-2 mb-4 text-[#1A1F2C] ${className}`}>{title}</h2>
+      {description && <p className={`text-[#1A1F2C] ${className} text-lg`}>{description}</p>}
       {children}
     </div>
   );
