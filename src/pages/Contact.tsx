@@ -161,12 +161,22 @@ const Contact = () => {
               </h3>
               <div className="space-y-4 mt-4">
                 <div className="flex items-start">
-                  <MapPin
-                    size={18}
-                    className="text-brand-orange mr-3 flex-shrink-0 mt-1"
-                  />
-                  <p className="text-gray-600">{office.address}</p>
+                  <a
+                    href={`https://www.google.com/maps?q=${encodeURIComponent(office.address)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-brand-orange transition-colors"
+                  >
+                    <div className="flex">
+                      <MapPin
+                        size={18}
+                        className="text-brand-orange mr-3 flex-shrink-0 mt-1"
+                      />
+                      {office.address}
+                    </div>
+                  </a>
                 </div>
+
                 <div className="flex items-center">
                   <Phone
                     size={18}

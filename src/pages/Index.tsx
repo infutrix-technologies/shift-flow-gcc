@@ -205,7 +205,7 @@ const Index = () => {
         <div className="relative">
           <MapComponent className="mb-8" />
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-8">
-            {["UAE", "KSA", "Oman", "Qatar", "Kuwait", "Bahrain"].map(
+            {["UAE", "KSA", "Oman", "Qatar", "Kuwait", "Bahrain" , "Jordan" , "Egypt" , "Syria" , "Yemen"].map(
               (country) => (
                 <div
                   key={country}

@@ -145,10 +145,17 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-2">
               <li className="text-gray-400 flex items-start">
-                <MapPin size={18} className="mr-2 mt-1 flex-shrink-0" />
-                <span>
-                  Park Office 4, Office S1 -59, Dubai Investment Park 1 , Dubai
-                </span>
+                <Link
+                  to="https://www.google.com/maps?q=Park+Office+4,+Office+S1-59,+Dubai+Investment+Park+1,+Dubai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                   className="text-gray-400 hover:text-brand-orange flex items-center"
+                >
+                  <div className="flex">
+                    <MapPin size={18} className="mr-2 mt-1 flex-shrink-0" />
+                    Park Office 4, Office S1 -59, Dubai Investment Park 1, Dubai
+                  </div>
+                </Link>
               </li>
               <li className="text-gray-400 flex items-center">
                 <Phone size={18} className="mr-2 flex-shrink-0" />

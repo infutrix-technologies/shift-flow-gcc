@@ -43,7 +43,11 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="nav-link">
+            <Link
+              to="/"
+              className="nav-link"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
               Home
             </Link>
 
