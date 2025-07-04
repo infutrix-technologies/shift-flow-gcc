@@ -1,19 +1,9 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import L, { LatLngExpression } from "leaflet";
+import L from "leaflet";
+import { MapPin } from "lucide-react";
 import "leaflet/dist/leaflet.css";
 
-// Fix default icon issue in Leaflet with red icon
-delete L.Icon.Default.prototype._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl:
-    "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png",
-  iconUrl:
-    "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
-  shadowUrl:
-    "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
-});
-
-const countries: { name: string; city: string; coords: LatLngExpression }[] = [
+const countries = [
   { name: "UAE", city: "Dubai", coords: [25.276987, 55.296249] },
   { name: "KSA", city: "Riyadh", coords: [24.7136, 46.6753] },
   { name: "Oman", city: "Muscat", coords: [23.588, 58.3829] },
@@ -35,8 +25,10 @@ const MapComponent = () => {
         scrollWheelZoom={false}
         className="h-full w-full"
       >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {countries.map(({ name, city, coords }) => (
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {countries.map(({ name, city, coords } : any) => (
           <Marker key={name} position={coords}>
             <Popup>
               <div className="text-sm font-medium">
