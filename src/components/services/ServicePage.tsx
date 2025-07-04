@@ -40,43 +40,53 @@ const ServicePage = ({
   return (
     <Layout>
       {/* Page Header */}
-      <div className="bg-brand-navy text-white py-20">
-        <div className="section-container">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="md:w-2/3">
-              <p className="text-brand-orange font-medium mb-2">{subtitle}</p>
-              <h1 className="heading-1 mb-4">{title}</h1>
-              <p className="text-lg text-gray-300 mb-8">{description}</p>
-              <div className="flex flex-wrap gap-4">
-                <Button
-                  asChild
-                  size="lg"
-                  className="bg-brand-orange hover:bg-brand-orange/90"
-                >
-                  <Link to="/contact#quote" className="flex items-center">
-                    Get a Quote <ArrowRight size={18} className="ml-2" />
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="border-white text-black hover:bg-white/10"
-                >
-                  <Link to="/contact" className="flex items-center">
-                    Contact Us <ArrowRight size={18} className="ml-2" />
-                  </Link>
-                </Button>
-              </div>
-            </div>
-            <div className="md:w-1/3 flex justify-center">
-              <div className="w-32 h-32 bg-brand-orange/20 rounded-full flex items-center justify-center">
-                {icon}
-              </div>
-            </div>
-          </div>
+    <div
+  className="relative bg-brand-navy text-white py-20"
+  style={{
+    backgroundImage: "url('/lovable-uploads/picture3.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  <div className="absolute inset-0 bg-brand-navy/80 z-0"></div>
+
+  <div className="relative z-10 section-container">
+    <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+      <div className="md:w-2/3">
+        <p className="text-brand-orange font-medium mb-2">{subtitle}</p>
+        <h1 className="heading-1 mb-4">{title}</h1>
+        <p className="text-lg text-gray-300 mb-8">{description}</p>
+        <div className="flex flex-wrap gap-4">
+          <Button
+            asChild
+            size="lg"
+            className="bg-brand-orange hover:bg-brand-orange/90"
+          >
+            <Link to="/contact#quote" className="flex items-center">
+              Get a Quote <ArrowRight size={18} className="ml-2" />
+            </Link>
+          </Button>
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="border-white text-black hover:bg-white/10"
+          >
+            <Link to="/contact" className="flex items-center">
+              Contact Us <ArrowRight size={18} className="ml-2" />
+            </Link>
+          </Button>
         </div>
       </div>
+      <div className="md:w-1/3 flex justify-center">
+        <div className="w-32 h-32 bg-brand-orange/20 rounded-full flex items-center justify-center">
+          {icon}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
       {/* Breadcrumb */}
       <div className="bg-gray-100 py-3">

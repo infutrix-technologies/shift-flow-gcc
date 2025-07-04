@@ -167,7 +167,7 @@ const Contact = () => {
       {/* Branch Offices */}
       <section className="section-container bg-gray-50">
         <SectionHeader
-          title="Our Branch Offices"
+          title="Our Head Office"
           subtitle="GCC LOCATIONS"
           description="With strategic locations across the GCC, we ensure efficient service delivery and local expertise."
         />
@@ -253,7 +253,7 @@ const Contact = () => {
           subtitle="BRANCH LOCATOR"
           description="Explore our network of offices and distribution centers across the GCC region."
         />
-        <MapComponent className="h-96" />
+        <MapComponent />
       </section>
 
       {/* Customer Support */}

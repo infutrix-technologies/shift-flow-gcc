@@ -19,7 +19,7 @@ const Hero = ({ videoSrc }: HeroProps) => {
     <div className="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
       {/* Background Image Overlay */}
       <div
-        className="absolute inset-0 bg-center bg-cover bg-no-repeat opacity-60"
+        className="absolute inset-0 bg-center bg-cover bg-no-repeat brightness-50 z-0"
         style={{
           backgroundImage: "url('/lovable-uploads/homeBanner.png')",
         }}
@@ -28,7 +28,7 @@ const Hero = ({ videoSrc }: HeroProps) => {
       <div className="absolute inset-0 overflow-hidden z-0">
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20 z-0">
           {/* <img
-            src="/lovable-uploads/ae375e28-4351-41e5-8d71-ff77c43b924a.png"
+            src="lovable-uploads/homeBanner.png"
             alt="GravityShift Symbol"
             className="w-96 h-96 invert grayscale opacity-10 animate-spin duration-custom ease-linear infinite origin-center"
           /> */}
@@ -48,8 +48,8 @@ const Hero = ({ videoSrc }: HeroProps) => {
         )}
       </div>
 
-      <div className="relative z-10 section-container min-h-[calc(100vh-80px)] flex flex-col justify-center">
-        <div className="max-w-3xl text-black">
+      <div className="relative z-10 section-container min-h-[calc(100vh-80px)] flex flex-col ">
+        <div className="text-black">
           <div className="flex items-center mb-6">
             {/* <img
               src="/lovable-uploads/ae375e28-4351-41e5-8d71-ff77c43b924a.png"
@@ -57,7 +57,7 @@ const Hero = ({ videoSrc }: HeroProps) => {
               className="w-24 h-24 mr-4 invert grayscale animate-spin duration-custom infinite"
             /> */}
             <h1
-              className="heading-1 text-[#1A1F2C] animate-fade-in"
+              className="heading-1 text-[#ffffff] animate-fade-in"
               style={{ animationDelay: "0.2s" }}
             >
               Transforming Logistics with Innovation and Reliability
@@ -65,7 +65,7 @@ const Hero = ({ videoSrc }: HeroProps) => {
           </div>
 
           <p
-            className="text-xl mb-8 text-[#A1F2C] animate-fade-in"
+            className="text-xl mb-8 text-[#ffffff] animate-fade-in"
             style={{ animationDelay: "0.4s" }}
           >
             GravityShift delivers technology-driven, multi-modal logistics

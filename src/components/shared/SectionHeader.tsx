@@ -24,13 +24,13 @@ const SectionHeader = ({
   };
 
   return (
-    <div className={`max-w-3xl ${alignClass[align]} mb-12 ${className}`}>
+    <div className={`${alignClass[align]} mb-12 ${className}`}>
       {subtitle && (
         <span className="inline-block text-brand-orange font-semibold mb-2">
           {subtitle}
         </span>
       )}
-      <h2 className={`heading-2 mb-4 text-[#1A1F2C] ${className}`}>{title}</h2>
+      <h2 className={`heading-1 mb-4 text-[#1A1F2C] ${className}`}>{title}</h2>
       {description && <p className={`text-[#1A1F2C] ${className} text-lg`}>{description}</p>}
       {children}
     </div>

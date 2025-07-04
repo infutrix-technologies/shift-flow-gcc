@@ -1,17 +1,51 @@
-const MapComponent = ({ className = "" }: { className?: string }) => {
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import L, { LatLngExpression } from "leaflet";
+import "leaflet/dist/leaflet.css";
+
+// Fix default icon issue in Leaflet with red icon
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl:
+    "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png",
+  iconUrl:
+    "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png",
+  shadowUrl:
+    "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
+});
+
+const countries: { name: string; city: string; coords: LatLngExpression }[] = [
+  { name: "UAE", city: "Dubai", coords: [25.276987, 55.296249] },
+  { name: "KSA", city: "Riyadh", coords: [24.7136, 46.6753] },
+  { name: "Oman", city: "Muscat", coords: [23.588, 58.3829] },
+  { name: "Qatar", city: "Doha", coords: [25.276987, 51.520008] },
+  { name: "Kuwait", city: "Kuwait City", coords: [29.3759, 47.9774] },
+  { name: "Bahrain", city: "Manama", coords: [26.2285, 50.5861] },
+  { name: "Jordan", city: "Amman", coords: [31.9454, 35.9284] },
+  { name: "Egypt", city: "Cairo", coords: [30.0444, 31.2357] },
+  { name: "Syria", city: "Damascus", coords: [33.5138, 36.2765] },
+  { name: "Yemen", city: "Sana'a", coords: [15.3694, 44.191] },
+];
+
+const MapComponent = () => {
   return (
-    <div
-      className={`relative w-full h-64 md:h-80 bg-gray-100 rounded-lg overflow-hidden ${className}`}
-    >
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28931.14292262838!2d55.14478759561374!3d24.9867631814215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f728492c989b3%3A0xacfcb5c405ca278!2sDubai%20Investments%20Park%20Office!5e0!3m2!1sen!2sin!4v1746097566542!5m2!1sen!2sin"
-        width={"100%"}
-        height={"100%"}
-        style={{ border: 0 }}
-        allowFullScreen
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      />
+    <div className="w-full h-[500px] rounded-lg overflow-hidden shadow-lg mt-8">
+      <MapContainer
+        center={[25.276987, 55.296249]}
+        zoom={5}
+        scrollWheelZoom={false}
+        className="h-full w-full"
+      >
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        {countries.map(({ name, city, coords }) => (
+          <Marker key={name} position={coords}>
+            <Popup>
+              <div className="text-sm font-medium">
+                {city}, {name}
+              </div>
+            </Popup>
+          </Marker>
+        ))}
+      </MapContainer>
     </div>
   );
 };
