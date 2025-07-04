@@ -16,14 +16,22 @@ const Hero = ({ videoSrc }: HeroProps) => {
   };
 
   return (
-    <div className="relative bg-brand-navy">
+    <div className="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
+      {/* Background Image Overlay */}
+      <div
+        className="absolute inset-0 bg-center bg-cover bg-no-repeat opacity-60"
+        style={{
+          backgroundImage: "url('/lovable-uploads/homeBanner.png')",
+        }}
+      ></div>
+
       <div className="absolute inset-0 overflow-hidden z-0">
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-20 z-0">
-          <img
+          {/* <img
             src="/lovable-uploads/ae375e28-4351-41e5-8d71-ff77c43b924a.png"
             alt="GravityShift Symbol"
             className="w-96 h-96 invert grayscale opacity-10 animate-spin duration-custom ease-linear infinite origin-center"
-          />
+          /> */}
         </div>
         {videoSrc ? (
           <video
@@ -36,20 +44,20 @@ const Hero = ({ videoSrc }: HeroProps) => {
             <source src={videoSrc} type="video/mp4" />
           </video>
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-brand-navy via-brand-navy/90 to-brand-navy/80"></div>
+          <div className="w-full h-full"></div>
         )}
       </div>
 
       <div className="relative z-10 section-container min-h-[calc(100vh-80px)] flex flex-col justify-center">
-        <div className="max-w-3xl text-white">
+        <div className="max-w-3xl text-black">
           <div className="flex items-center mb-6">
-            <img
+            {/* <img
               src="/lovable-uploads/ae375e28-4351-41e5-8d71-ff77c43b924a.png"
               alt="GravityShift Logo"
               className="w-24 h-24 mr-4 invert grayscale animate-spin duration-custom infinite"
-            />
+            /> */}
             <h1
-              className="heading-1 text-white animate-fade-in"
+              className="heading-1 text-[#1A1F2C] animate-fade-in"
               style={{ animationDelay: "0.2s" }}
             >
               Transforming Logistics with Innovation and Reliability
@@ -57,7 +65,7 @@ const Hero = ({ videoSrc }: HeroProps) => {
           </div>
 
           <p
-            className="text-xl mb-8 text-gray-300 animate-fade-in"
+            className="text-xl mb-8 text-[#A1F2C] animate-fade-in"
             style={{ animationDelay: "0.4s" }}
           >
             GravityShift delivers technology-driven, multi-modal logistics
@@ -98,11 +106,18 @@ const Hero = ({ videoSrc }: HeroProps) => {
             <h3 className="text-lg font-semibold mb-2 text-brand-navy">
               Track Your Shipment
             </h3>
-            <form onSubmit={handleTrackingSubmit} className="flex">
+            <form onSubmit={handleTrackingSubmit} className="flex flex-col space-y-2 sm:flex-row sm:space-y-0">
               <input
                 type="text"
                 placeholder="Enter tracking number"
-                className="flex-grow px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-brand-orange"
+                className="
+                w-full
+                px-4 py-0
+                border border-gray-300
+                rounded-md                     /* mobile: full rounding */
+                sm:rounded-l-md sm:rounded-r-none /* sm+: left only */
+               focus:outline-none focus:ring-2 focus:ring-brand-orange
+    "
                 value={trackingNumber}
                 onChange={(e) => setTrackingNumber(e.target.value)}
                 required
@@ -111,11 +126,18 @@ const Hero = ({ videoSrc }: HeroProps) => {
               <Button
                 type="submit"
                 disabled
-                className="rounded-l-none flex items-center"
+                className="
+      w-full
+      px-4 py-4
+      rounded-md                         /* mobile: full rounding */
+      sm:rounded-l-none sm:rounded-r-md /* sm+: right only */
+      flex items-center justify-center
+    "
               >
                 <Search size={18} className="mr-2" /> Track (Coming Soon)
               </Button>
             </form>
+
           </div>
         </div>
       </div>

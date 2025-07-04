@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import SectionHeader from "@/components/shared/SectionHeader";
@@ -11,11 +11,15 @@ import { FaWhatsapp } from "react-icons/fa";
 const Contact = () => {
   const [activeTab, setActiveTab] = useState("contact");
   const location = useLocation();
-
+  const tabSectionRef = useRef<HTMLDivElement>(null); // 👈 Ref to scroll
   useEffect(() => {
-    // Check if there's a hash in the URL to determine which tab to show
     if (location.hash === "#quote") {
       setActiveTab("quote");
+
+      // Scroll after slight delay to allow tab change/render
+      setTimeout(() => {
+        tabSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
     }
   }, [location]);
 
@@ -23,19 +27,34 @@ const Contact = () => {
     {
       city: "Dubai",
       country: "UAE",
-      address: "Park Office 4, Office S1 -59, Dubai Investment Park 1 , Dubai",
-      phone: "+97-155-154-4123",
-      email: "info@gravityshift.ae",
-      hours: "8:00 AM - 6:00 PM (Sun-Thu)",
+      address: "Dubai Investments Park Office",
+      phone: "+971-4-123-4567",
+      email: "dubai@example.com",
+      hours: "Mon–Fri: 9am–6pm",
+      mapEmbedUrl:
+        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28931.14292262838!2d55.14478759561374!3d24.9867631814215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f728492c989b3%3A0xacfcb5c405ca278!2sDubai%20Investments%20Park%20Office!5e0!3m2!1sen!2sin!4v1746097566542!5m2!1sen!2sin",
     },
+    // Add more offices as needed
   ];
+
+
+  const getEmbedUrl = (address: string) => {
+    const base = "https://www.google.com/maps/embed/v1/place";
+    const apiKey = "YOUR_GOOGLE_MAPS_API_KEY"; // Replace with your actual key
+    return `${base}?key=${apiKey}&q=${encodeURIComponent(address)}`;
+  };
+
 
   return (
     <Layout>
       {/* Page Header */}
-      <div className="bg-transparent relative text-white py-20">
+      <div className="relative bg-cover bg-center bg-no-repeat min-h-screen flex items-center justify-center text-center"
+        // style={{
+        //   backgroundImage: "url('/lovable-uploads/homeBanner.png')",
+        // }}
+        >
         <img
-          src="/banner.jpg"
+          src="/lovable-uploads/homeBanner.png"
           alt="Banner"
           className="top-0 left-0 absolute -z-10 w-full h-full object-cover brightness-50"
         />
@@ -51,7 +70,7 @@ const Contact = () => {
       </div>
 
       {/* Contact Form and Info */}
-      <section className="section-container">
+      <section ref={tabSectionRef} className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Contact Information */}
           <div className="lg:col-span-1 bg-gray-50 rounded-lg p-6 h-fit">
@@ -153,56 +172,79 @@ const Contact = () => {
           description="With strategic locations across the GCC, we ensure efficient service delivery and local expertise."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="space-y-12">
           {offices.map((office, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-xl font-semibold mb-2 text-brand-navy">
-                {office.city}, {office.country}
-              </h3>
-              <div className="space-y-4 mt-4">
-                <div className="flex items-start">
-                  <a
-                    href={`https://www.google.com/maps?q=${encodeURIComponent(office.address)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-600 hover:text-brand-orange transition-colors"
-                  >
-                    <div className="flex">
-                      <MapPin
-                        size={18}
-                        className="text-brand-orange mr-3 flex-shrink-0 mt-1"
-                      />
-                      {office.address}
-                    </div>
-                  </a>
-                </div>
+            <div
+              className="flex flex-col md:flex-row items-start gap-6"
+              key={index}
+            >
+              {/* Office Details */}
+              <div className="bg-white rounded-lg shadow-md p-6 w-full md:w-1/4">
+                <h3 className="text-xl font-semibold mb-2 text-brand-navy">
+                  {office.city}, {office.country}
+                </h3>
+                <div className="space-y-4 mt-4">
+                  <div className="flex items-start">
+                    <a
+                      href={`https://www.google.com/maps?q=${encodeURIComponent(
+                        office.address
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-600 hover:text-brand-orange transition-colors"
+                    >
+                      <div className="flex">
+                        <MapPin
+                          size={18}
+                          className="text-brand-orange mr-3 flex-shrink-0 mt-1"
+                        />
+                        {office.address}
+                      </div>
+                    </a>
+                  </div>
 
-                <div className="flex items-center">
-                  <Phone
-                    size={18}
-                    className="text-brand-orange mr-3 flex-shrink-0"
-                  />
-                  <p className="text-gray-600">{office.phone}</p>
+                  <div className="flex items-center">
+                    <Phone
+                      size={18}
+                      className="text-brand-orange mr-3 flex-shrink-0"
+                    />
+                    <p className="text-gray-600">{office.phone}</p>
+                  </div>
+                  <div className="flex items-center">
+                    <Mail
+                      size={18}
+                      className="text-brand-orange mr-3 flex-shrink-0"
+                    />
+                    <p className="text-gray-600">{office.email}</p>
+                  </div>
+                  <div className="flex items-center">
+                    <Clock
+                      size={18}
+                      className="text-brand-orange mr-3 flex-shrink-0"
+                    />
+                    <p className="text-gray-600">{office.hours}</p>
+                  </div>
                 </div>
-                <div className="flex items-center">
-                  <Mail
-                    size={18}
-                    className="text-brand-orange mr-3 flex-shrink-0"
-                  />
-                  <p className="text-gray-600">{office.email}</p>
-                </div>
-                <div className="flex items-center">
-                  <Clock
-                    size={18}
-                    className="text-brand-orange mr-3 flex-shrink-0"
-                  />
-                  <p className="text-gray-600">{office.hours}</p>
-                </div>
+              </div>
+
+              {/* Static Embedded Map */}
+              <div className="w-full  h-auto md:h-80 rounded-lg overflow-hidden">
+                <iframe
+                  src={office.mapEmbedUrl}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-full"
+                />
               </div>
             </div>
           ))}
         </div>
       </section>
+
 
       {/* Map Section */}
       <section className="section-container">

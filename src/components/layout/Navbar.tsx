@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,6 +22,15 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 50); // slight delay ensures DOM is ready
+  }, [pathname]);
+
 
   // Disable real tracking form toggle, show coming soon message instead
   const toggleTracking = () => {

@@ -86,7 +86,7 @@ const ServicePage = ({
               Home
             </Link>
             <ChevronRight size={16} className="mx-2" />
-            <Link to="/services" className="hover:text-brand-orange">
+            <Link to="/services/land-freight" className="hover:text-brand-orange">
               Services
             </Link>
             <ChevronRight size={16} className="mx-2" />
@@ -128,7 +128,7 @@ const ServicePage = ({
               </Link>
             </Button>
           </div>
-          <div className="bg-gray-100 rounded-lg overflow-hidden h-auto flex items-center justify-center">
+          <div className="bg-gray-100 rounded-lg overflow-hidden h-full flex items-center justify-center">
             {image ? (
               <img
                 src={image}
@@ -136,11 +136,12 @@ const ServicePage = ({
                 className="w-full h-full object-cover"
               />
             ) : (
-              <div className="flex justify-center items-center h-full my-6">
+              <div className="flex justify-center items-center h-full">
                 <img
-                  src="/lovable-uploads/ae375e28-4351-41e5-8d71-ff77c43b924a.png"
+                  src="/lovable-uploads/picture3.jpg"
                   alt="GravityShift Symbol"
-                  className="w-96 h-96 animate-spin duration-custom ease-linear infinite origin-center"
+                  // className="w-96 h-96 animate-spin duration-custom ease-linear infinite origin-center"
+                  className="w-full h-full object-cover"
                 />
               </div>
             )}

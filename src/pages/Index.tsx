@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
@@ -16,7 +17,6 @@ import {
   FileText,
   Users,
   MapPin,
-  Package,
   ArrowRight,
   ShieldCheck,
 } from "lucide-react";
@@ -60,6 +60,51 @@ const Index = () => {
     },
   ];
 
+  const chunkArray = (arr: any[], size: number) => {
+    const chunks = [];
+    for (let i = 0; i < arr.length; i += size) {
+      chunks.push(arr.slice(i, i + size));
+    }
+    return chunks;
+  };
+
+  const ServiceCardGrid = ({ services }: { services: any[] }) => {
+    const getChunked = () => {
+      const width = window.innerWidth;
+      if (width >= 1024) return chunkArray(services, 3);
+      if (width >= 768) return chunkArray(services, 2);
+      return chunkArray(services, 1);
+    };
+
+    const [chunkedServices, setChunkedServices] = useState(getChunked());
+
+    useEffect(() => {
+      const handleResize = () => setChunkedServices(getChunked());
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }, [services]);
+
+    return (
+      <div className="space-y-8">
+        {chunkedServices.map((chunk, idx) => (
+          <div
+            key={idx}
+            className={`flex flex-wrap gap-6 ${chunk.length < 3 ? "justify-center" : "justify-between"
+              }`}
+          >
+            {chunk.map((service, i) => (
+              <div key={i} className="w-full max-w-[380px]">
+                <div className="h-full flex flex-col">
+                  <ServiceCard {...service} />
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   const testimonials = [
     {
       quote:
@@ -96,18 +141,7 @@ const Index = () => {
           subtitle="WHAT WE OFFER"
           description="We provide comprehensive logistics solutions across the GCC region, leveraging technology and innovation to optimize your supply chain."
         />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <ServiceCard
-              key={index}
-              title={service.title}
-              description={service.description}
-              icon={service.icon}
-              link={service.link}
-            />
-          ))}
-        </div>
+        <ServiceCardGrid services={services} />
       </section>
 
       {/* About Section */}
@@ -128,48 +162,32 @@ const Index = () => {
               industry.
             </p>
             <div className="space-y-4 mb-8">
-              <div className="flex items-start">
-                <div className="text-brand-orange bg-brand-orange/10 p-1 rounded-full mr-3 mt-1">
-                  <ShieldCheck size={18} />
+              {[
+                {
+                  title: "RTA Approved & GIG Insured",
+                  desc: "Fully compliant with all regulatory requirements across the GCC.",
+                },
+                {
+                  title: "Advanced Technology Integration",
+                  desc: "Real-time tracking, AI-powered route optimization, and seamless API connectivity.",
+                },
+                {
+                  title: "Sustainability Commitment",
+                  desc: "Eco-friendly practices and carbon footprint reduction initiatives.",
+                },
+              ].map((item, i) => (
+                <div className="flex items-start" key={i}>
+                  <div className="text-brand-orange bg-brand-orange/10 p-1 rounded-full mr-3 mt-1">
+                    <ShieldCheck size={18} />
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-brand-navy">
+                      {item.title}
+                    </h4>
+                    <p className="text-gray-600 text-sm">{item.desc}</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-medium text-brand-navy">
-                    RTA Approved & GIG Insured
-                  </h4>
-                  <p className="text-gray-600 text-sm">
-                    Fully compliant with all regulatory requirements across the
-                    GCC.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <div className="text-brand-orange bg-brand-orange/10 p-1 rounded-full mr-3 mt-1">
-                  <ShieldCheck size={18} />
-                </div>
-                <div>
-                  <h4 className="font-medium text-brand-navy">
-                    Advanced Technology Integration
-                  </h4>
-                  <p className="text-gray-600 text-sm">
-                    Real-time tracking, AI-powered route optimization, and
-                    seamless API connectivity.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <div className="text-brand-orange bg-brand-orange/10 p-1 rounded-full mr-3 mt-1">
-                  <ShieldCheck size={18} />
-                </div>
-                <div>
-                  <h4 className="font-medium text-brand-navy">
-                    Sustainability Commitment
-                  </h4>
-                  <p className="text-gray-600 text-sm">
-                    Eco-friendly practices and carbon footprint reduction
-                    initiatives.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
             <Button asChild>
               <Link to="/about" className="flex items-center">
@@ -177,18 +195,20 @@ const Index = () => {
               </Link>
             </Button>
           </div>
-          <div className="bg-gray-100 rounded-lg p-6 h-full">
-            <div className="flex flex-wrap gap-3">
-              <CertificationBadge name="RTA Approved" />
-              <CertificationBadge name="GIG Insured" />
-              <CertificationBadge name="ISO 9001" />
-              <CertificationBadge name="ISO 14001" />
+
+          <div className="rounded-lg p-6 h-full">
+            <div className="flex flex-wrap gap-3 mb-6">
+              {["RTA Approved", "GIG Insured", "ISO 9001", "ISO 14001"].map(
+                (badge, idx) => (
+                  <CertificationBadge name={badge} key={idx} />
+                )
+              )}
             </div>
-            <div className="flex justify-center items-center h-full my-6">
+            <div className="flex justify-center items-center h-full">
               <img
-                src="/lovable-uploads/ae375e28-4351-41e5-8d71-ff77c43b924a.png"
+                src="/lovable-uploads/picture1.png"
                 alt="GravityShift Symbol"
-                className="w-96 h-96 animate-spin duration-custom ease-linear infinite origin-center"
+                className="w-full h-full object-cover"
               />
             </div>
           </div>
@@ -205,7 +225,7 @@ const Index = () => {
         <div className="relative">
           <MapComponent className="mb-8" />
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mt-8">
-            {["UAE", "KSA", "Oman", "Qatar", "Kuwait", "Bahrain" , "Jordan" , "Egypt" , "Syria" , "Yemen"].map(
+            {["UAE", "KSA", "Oman", "Qatar", "Kuwait", "Bahrain", "Jordan", "Egypt", "Syria", "Yemen"].map(
               (country) => (
                 <div
                   key={country}
@@ -243,8 +263,17 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-brand-navy py-16">
-        <div className="section-container">
+      <section className="relative py-16 overflow-hidden">
+        {/* Background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-60 bg-no-repeat"
+          style={{ backgroundImage: "url('/lovable-uploads/CTAPoster.png')" }}
+        />
+        {/* Dark overlay (optional) */}
+        <div className="absolute inset-0 bg-black/60" />
+
+        {/* Content */}
+        <div className="relative section-container">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="heading-2 text-white mb-6">
               Ready to Transform Your Logistics?
@@ -265,7 +294,7 @@ const Index = () => {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-white text-black hover:bg-white/10"
+                className="border-[#1A1F2C1] text-[#1A1F2C] hover:bg-white/10"
               >
                 <Link to="/contact">Contact Us</Link>
               </Button>
@@ -273,6 +302,7 @@ const Index = () => {
           </div>
         </div>
       </section>
+
     </Layout>
   );
 };

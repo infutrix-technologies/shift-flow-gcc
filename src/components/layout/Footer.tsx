@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   MapPin,
   Phone,
@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 const Footer = () => {
+  const navigate = useNavigate();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -24,7 +25,7 @@ const Footer = () => {
               <img
                 src="/lovable-uploads/c414fd89-7210-4891-8b3e-b4be72fdb25d.png"
                 alt="GravityShift Logo"
-                className="h-12 mb-4 bg-white p-1 rounded"
+                className="w-2/3 mb-4 rounded-lg"
               />
             </Link>
             <p className="text-gray-400 mb-6">
@@ -106,14 +107,14 @@ const Footer = () => {
                   <ArrowRight size={14} className="mr-1" /> About Us
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   to="/fleet"
                   className="text-gray-400 hover:text-brand-orange flex items-center"
                 >
                   <ArrowRight size={14} className="mr-1" /> Fleet Capabilities
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
                   to="/sops"
@@ -122,17 +123,17 @@ const Footer = () => {
                   <ArrowRight size={14} className="mr-1" /> SOPs
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   to="/technology"
                   className="text-gray-400 hover:text-brand-orange flex items-center"
                 >
                   <ArrowRight size={14} className="mr-1" /> Technology
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
-                  to="/contact"
+                  to="/contact#quote"
                   className="text-gray-400 hover:text-brand-orange flex items-center"
                 >
                   <ArrowRight size={14} className="mr-1" /> Contact Us
@@ -170,7 +171,7 @@ const Footer = () => {
                 <span>www.gravityshift.ae</span>
               </li>
             </ul>
-            <Button className="mt-4 bg-brand-orange hover:bg-brand-orange/90 w-full">
+            <Button onClick={() => navigate("/contact#quote")} className="mt-4 bg-brand-orange hover:bg-brand-orange/90 w-full">
               Get a Quote
             </Button>
           </div>
