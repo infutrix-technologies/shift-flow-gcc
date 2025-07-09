@@ -21,7 +21,7 @@ const Hero = ({ videoSrc }: HeroProps) => {
       <div
         className="absolute inset-0 bg-center bg-cover bg-no-repeat brightness-50 z-0"
         style={{
-          backgroundImage: "url('/lovable-uploads/homeBanner.jpg')",
+          backgroundImage: "url('/lovable-uploads/homeBanner.webp')",
         }}
       ></div>
 

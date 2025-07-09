@@ -43,7 +43,7 @@ const ServicePage = ({
     <div
   className="relative bg-brand-navy text-white py-20"
   style={{
-    backgroundImage: "url('/lovable-uploads/picture3.jpg')",
+    backgroundImage: "url('/lovable-uploads/picture3.webp')",
     backgroundSize: "cover",
     backgroundPosition: "center",
   }}
