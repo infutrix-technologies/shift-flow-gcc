@@ -54,7 +54,7 @@ const Contact = () => {
         // }}
         >
         <img
-          src="/lovable-uploads/picture2.png"
+          src="/lovable-uploads/picture2.jpg"
           alt="Banner"
           className="top-0 left-0 absolute -z-10 w-full h-full object-cover brightness-50"
         />

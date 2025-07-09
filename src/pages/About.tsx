@@ -114,7 +114,7 @@ const About = () => {
           <div className="order-1 lg:order-2 bg-gray-100 rounded-lg overflow-hidden  flex items-center justify-center">
             <div className="flex justify-center items-center h-full">
               <img
-                src="/lovable-uploads/aboutBanner.png"
+                src="/lovable-uploads/aboutBanner.jpg"
                 alt="GravityShift Symbol"
                 // className="w-96 h-96 animate-spin duration-custom ease-linear infinite origin-center"
                 className="w-full h-full"
